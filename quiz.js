@@ -143,7 +143,7 @@ function showResults() {
 
   // Show wrong answers
   if (wrongAnswers.length > 0) {
-    reviewSection.innerHTML = `<h3>Review Your Mistakes</h3>`;
+    reviewSection.innerHTML = `<h3>Review</h3>`;
     wrongAnswers.forEach((item) => {
       const div = document.createElement("div");
       div.classList.add("review-item");
