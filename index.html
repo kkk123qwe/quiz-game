@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hunt Museum Quiz Game</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Playfair Display", serif;
+        background-color: #fdfaf5;
+        margin: 0;
+        padding: 2rem;
+        color: #222;
+      }
+
+      .quiz-container {
+        max-width: 700px;
+        margin: auto;
+        padding: 2rem;
+        background-color: #f8f8f8;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .progress-bar {
+        margin-bottom: 1.5rem;
+      }
+
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      #timer-box {
+        background-color: #eee5dd;
+        padding: 0.3rem 0.7rem;
+        border-radius: 8px;
+        font-family: monospace;
+      }
+
+      .bar-bg {
+        background-color: #f0e8de;
+        border-radius: 8px;
+        height: 8px;
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        width: 0%;
+        background-color: #5c7a9a;
+        transition: width 0.3s ease;
+      }
+
+      .question {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      #quiz-image {
+        width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+      }
+
+      .options button {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: #e0e0e0;
+        transition: background 0.3s ease;
+      }
+
+      .options button:hover {
+        background-color: #d6d6d6;
+      }
+
+      .options button.correct {
+        border: 3px solid #1b7b5c;
+        background-color: white;
+        font-weight: bold;
+        color: black;
+      }
+
+      .options button.wrong {
+        border: 3px solid #912727;
+        background-color: #f6f2f5;
+        position: relative;
+        font-weight: bold;
+        color: black;
+      }
+
+      .options button.wrong::after {
+        content: "✕";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #912727;
+        color: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        text-align: center;
+        line-height: 22px;
+        font-size: 14px;
+      }
+
+      .score {
+        margin-top: 1.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      #review-section {
+        margin-top: 2rem;
+        border-top: 1px solid #ccc;
+        padding-top: 1rem;
+      }
+
+      .review-item {
+        margin-bottom: 1.5rem;
+      }
+
+      .review-item img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+        margin: 0.5rem 0;
+      }
+
+      .review-item p {
+        margin: 0.2rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Hunt Museum Quiz Game</h1>
+      <div class="progress-bar">
+        <div class="progress-label">
+          <span id="progress-count">1 / 5</span>
+          <span id="timer-box">15</span>
+        </div>
+        <div class="bar-bg">
+          <div class="bar-fill" id="progress-fill"></div>
+        </div>
+      </div>
+      <div class="question" id="question"></div>
+      <img id="quiz-image" src="" alt="quiz image" />
+      <div class="options" id="options"></div>
+      <div class="score" id="score"></div>
+      <div id="review-section"></div>
+    </div>
+    <script src="quiz.js"></script>
+  </body>
+</html>
